@@ -1,0 +1,9 @@
+# Files to include in npm package
+dist/
+README.md
+QUICKSTART.md
+LICENSE
+CHANGELOG.md
+
+# Include type definitions
+*.d.ts
