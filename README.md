@@ -1,6 +1,10 @@
 # Flagit React SDK
 
+> ⚠️ **Work in Progress** - This SDK is under active development. Features and APIs may change.
+
 A lightweight React SDK for feature flags with server-side evaluation, intelligent targeting, and zero configuration needed.
+
+🌐 **Dashboard**: [https://flagit-ui.vercel.app/](https://flagit-ui.vercel.app/) (WIP)
 
 ## Features
 
