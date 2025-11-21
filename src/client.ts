@@ -4,7 +4,7 @@ import {
 } from './types';
 
 // Default API URL - can be overridden in config
-const DEFAULT_API_URL = 'https://flagit-server.onrender.com';
+const DEFAULT_API_URL = 'https://raymon-pentagonal-evidently.ngrok-free.dev';
 
 export class FlagitClient {
   private config: FlagitConfig;
@@ -22,9 +22,12 @@ export class FlagitClient {
       throw new Error('envKey is required in FlagitConfig');
     }
 
+    // Extract environment from envKey (format: ff_development_xxx or ff_production_xxx)
+    const extractedEnv = this.extractEnvironmentFromKey(config.envKey);
+
     this.config = {
       apiUrl: DEFAULT_API_URL,
-      environment: 'development',
+      environment: extractedEnv,
       pollInterval: 30000, // 30 seconds default
       timeout: 5000, // 5 seconds default
       retryAttempts: 3,
@@ -104,10 +107,8 @@ export class FlagitClient {
    */
   isEnabled(flagName: string): boolean {
     const flag = this.cachedFlags.get(flagName);
-    if (!flag) {
-      return false;
-    }
-    return flag.isActive === true;
+    const isEnabled = flag ? flag.isActive === true : false;
+    return isEnabled;
   }
 
   /**
@@ -154,6 +155,17 @@ export class FlagitClient {
    */
   updateConfig(newConfig: Partial<FlagitConfig>): void {
     this.config = { ...this.config, ...newConfig };
+  }
+
+  /**
+   * Extract environment from envKey (format: ff_environment_xxx)
+   */
+  private extractEnvironmentFromKey(envKey: string): string {
+    const parts = envKey.split('_');
+    if (parts.length >= 2 && parts[0] === 'ff') {
+      return parts[1]; // Returns 'development', 'production', etc.
+    }
+    return 'development'; // Default fallback
   }
 
   /**
