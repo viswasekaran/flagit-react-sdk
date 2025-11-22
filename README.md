@@ -1,10 +1,8 @@
 # Flagit React SDK
 
-> ⚠️ **Work in Progress** - This SDK is under active development. Features and APIs may change.
-
 A lightweight React SDK for feature flags with server-side evaluation, intelligent targeting, and zero configuration needed.
 
-🌐 **Dashboard**: [https://flagit-ui.vercel.app/](https://flagit-ui.vercel.app/) (WIP)
+🌐 **Get Started**: [https://www.flagit.app/](https://www.flagit.app/)
 
 ## Features
 
@@ -316,9 +314,10 @@ const enabled = flagit.isEnabled('feature'); // Same pattern!
 
 ## Get Your Environment Key
 
-1. Go to [Flagit Dashboard](https://your-dashboard-url.com)
-2. Navigate to **Settings** → **Developer**
-3. Copy the environment key for your environment
+1. Sign up at [https://www.flagit.app/](https://www.flagit.app/)
+2. Create a new project or select an existing one
+3. Navigate to **Settings** → **Developer**
+4. Copy the environment key for your environment (development or production)
 
 ## License
 
