@@ -194,6 +194,7 @@ export class FlagitClient {
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
       'x-flagit-env-key': this.config.envKey,
+      'ngrok-skip-browser-warning': 'true',
       ...((options.headers || {}) as Record<string, string>)
     };
 
